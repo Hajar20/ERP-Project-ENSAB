@@ -1,51 +1,39 @@
 package com.erp.ensab.entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
-import com.erp.ensab.entities.*;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.*;
 import java.util.*;
 
-@Entity
-@Table(name="Candidate")
-public class Candidate implements Serializable {
+@Document(collection = "Candidate")
+public class Candidate {
 	public Candidate() {
 	}
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
 
-	@JsonIgnore
-	@ManyToOne(targetEntity=com.erp.ensab.entities.Major.class, fetch=FetchType.LAZY)
-	@JoinColumn(name = "MajorID")
+	@Id
+	private String ID; // Changed to String for MongoDB ObjectId compatibility
+
+	@DBRef
 	private Major major;
-	
-	@Column
+	@Indexed(unique = true)
 	private String cne;
-	
-	@Column
+
 	private String firstname;
-	
-	@Column
+
 	private String lastname;
-	
-	@Column
+
 	private Date birthdate;
-	
-	@Column
+
 	private String cni;
-	
-	@Column(length=10)
+
 	private long phone;
-	
-	@Column
-	private char sexe ;
-	
-	@OneToMany(mappedBy="candidate", targetEntity=com.erp.ensab.entities.Degree.class, fetch=FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Degree> degrees = new ArrayList<>();
-	
-	@OneToOne(mappedBy="candidate", targetEntity=com.erp.ensab.entities.Bac.class, fetch=FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+
+	private char sexe;
+
+	@DBRef
+	private List<Degree> degrees=new ArrayList<>();
+
 	private Bac bac;
 
 	public Candidate(Major major, String cne, String firstname, String lastname, Date birthdate, String cni, long phone, char sexe, Bac bac) {
@@ -60,11 +48,11 @@ public class Candidate implements Serializable {
 		this.bac = bac;
 	}
 
-	private void setID(long value) {
+	private void setID(String value) {
 		this.ID = value;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return ID;
 	}
 
@@ -150,8 +138,21 @@ public class Candidate implements Serializable {
 		return bac;
 	}
 	
+	@Override
 	public String toString() {
-		return String.valueOf(getID());
+		return "Candidate{" +
+				"ID='" + ID + '\'' +
+				", major=" + major +
+				", cne='" + cne + '\'' +
+				", firstname='" + firstname + '\'' +
+				", lastname='" + lastname + '\'' +
+				", birthdate=" + birthdate +
+				", cni='" + cni + '\'' +
+				", phone=" + phone +
+				", sexe=" + sexe +
+				", degrees=" + degrees +
+				", bac=" + bac +
+				'}';
 	}
 	
 }

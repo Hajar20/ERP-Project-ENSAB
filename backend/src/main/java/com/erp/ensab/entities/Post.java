@@ -1,83 +1,80 @@
 package com.erp.ensab.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-@Entity
-@Table(name="Post")
+
+@Document(collection = "Post")
 public class Post implements Serializable {
+	@Id
+	private String id;
+
+	@DBRef
+	private Responsable responsable;
+
+	private String title;
+	private String details;
+	private String file;
+
 	public Post() {
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
-
-	@JsonIgnore
-	@ManyToOne(targetEntity=com.erp.ensab.entities.Responsable.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="ResponsableID")
-	private Responsable responsable;
-	
-	@Column
-	private String title;
-	
-	@Column
-	private String details;
-	
-	@Column
-	private String file;
-
-	public Post(Responsable responsable, String title, String details, String file) {
-		this.responsable = responsable;
+	public Post(String title, String details, String file) {
 		this.title = title;
 		this.details = details;
 		this.file = file;
 	}
 
-	private void setID(long value) {
-		this.ID = value;
+	public String getId() {
+		return id;
 	}
-	
-	public long getID() {
-		return ID;
-	}
-	
 
-	public void setTitle(String value) {
-		this.title = value;
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public void setDetails(String value) {
-		this.details = value;
-	}
-	
-	public String getDetails() {
-		return details;
-	}
-	
-	public void setFile(String value) {
-		this.file = value;
-	}
-	
-	public String getFile() {
-		return file;
-	}
-	
-	public void setResponsable(Responsable value) {
-		this.responsable = value;
-	}
-	
+
 	public Responsable getResponsable() {
 		return responsable;
 	}
-	
-	public String toString() {
-		return String.valueOf(getID());
+
+	public void setResponsable(Responsable responsable) {
+		this.responsable = responsable;
 	}
-	
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+	@Override
+	public String toString() {
+		return "Post{" +
+				"id='" + id + '\'' +
+				", responsable=" + responsable +
+				", title='" + title + '\'' +
+				", details='" + details + '\'' +
+				", file='" + file + '\'' +
+				'}';
+	}
 }

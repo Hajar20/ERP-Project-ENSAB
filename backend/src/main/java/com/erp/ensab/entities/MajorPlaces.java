@@ -1,28 +1,23 @@
 package com.erp.ensab.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import java.io.Serializable;
-@Entity
-@Table(name="MajorPlaces")
-public class MajorPlaces implements Serializable {
-	public MajorPlaces() {
-	}
-
+@Document(collection = "MajorPlaces")
+public class MajorPlaces {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	@JsonIgnore
-	@ManyToOne(targetEntity=com.erp.ensab.entities.Criteria.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="CriteriaID")
+	private String id;
+
+	@DBRef
 	private Criteria criteria;
 
-	@Column
 	private String name;
-	
-	@Column
+
 	private int places;
+
+	public MajorPlaces() {
+	}
 
 	public MajorPlaces(Criteria criteria, String name, int places) {
 		this.criteria = criteria;
@@ -30,41 +25,45 @@ public class MajorPlaces implements Serializable {
 		this.places = places;
 	}
 
-	private void setId(long value) {
-		this.id = value;
-	}
-	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	
 
-	public void setName(String value) {
-		this.name = value;
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setPlaces(int value) {
-		this.places = value;
-	}
-	
-	public int getPlaces() {
-		return places;
-	}
-	
-	public void setCriteria(Criteria value) {
-		this.criteria = value;
-	}
-	
+
 	public Criteria getCriteria() {
 		return criteria;
 	}
-	
-	public String toString() {
-		return String.valueOf(getId());
+
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(int places) {
+		this.places = places;
+	}
+
+	@Override
+	public String toString() {
+		return "MajorPlaces{" +
+				"id='" + id + '\'' +
+				", criteria=" + criteria +
+				", name='" + name + '\'' +
+				", places=" + places +
+				'}';
+	}
 }

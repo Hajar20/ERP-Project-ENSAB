@@ -1,52 +1,39 @@
 package com.erp.ensab.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.*;
 
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name="Degree")
-public class Degree implements Serializable {
+@Document(collection = "Degree")
+public class Degree {
 	public Degree() {
 	}
 
-	@Id	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
-	@JsonIgnore
-	@ManyToOne(targetEntity=com.erp.ensab.entities.Candidate.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="CandidateID")
+	@Id
+	private String ID; // Changed to String for MongoDB ObjectId compatibility
+
+	@DBRef
 	private Candidate candidate;
-	
-	@Column
+
 	private String type;
-	
-	@Column
+
 	private String speciality;
-	
-	@Column
+
 	private Date diplomaDate;
-	
-	@Column
+
 	private float s1;
-	
-	@Column
+
 	private float s2;
-	
-	@Column
+
 	private float s3;
-	
-	@Column
+
 	private float s4;
-	
-	@Column
+
 	private float s5;
-	
-	@Column
+
 	private float s6;
-	
-	@Column
+
 	private String college;
 
 	public Degree(Candidate candidate, String type, String speciality, Date diplomaDate, float s1, float s2, float s3, float s4, float s5, float s6, String college) {
@@ -63,11 +50,11 @@ public class Degree implements Serializable {
 		this.college = college;
 	}
 
-	private void setID(long value) {
+	private void setID(String value) {
 		this.ID = value;
 	}
 	
-	public long getID() {
+	public String  getID() {
 		return ID;
 	}
 	
@@ -159,9 +146,22 @@ public class Degree implements Serializable {
 	public Candidate getCandidate() {
 		return candidate;
 	}
-	
+
+	@Override
 	public String toString() {
-		return String.valueOf(getID());
+		return "Degree{" +
+				"ID='" + ID + '\'' +
+				", candidate=" + candidate +
+				", type='" + type + '\'' +
+				", speciality='" + speciality + '\'' +
+				", diplomaDate=" + diplomaDate +
+				", s1=" + s1 +
+				", s2=" + s2 +
+				", s3=" + s3 +
+				", s4=" + s4 +
+				", s5=" + s5 +
+				", s6=" + s6 +
+				", college='" + college + '\'' +
+				'}';
 	}
-	
 }

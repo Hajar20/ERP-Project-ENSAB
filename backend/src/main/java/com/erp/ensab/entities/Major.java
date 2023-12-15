@@ -1,35 +1,33 @@
 package com.erp.ensab.entities;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="Major")
-public class Major implements Serializable {
+@Document(collection = "Major")
+public class Major {
+	@Id
+	private String ID;
+
+	private String name;
+
+	@DBRef
+	private List<Candidate> candidates = new ArrayList<>();
+
 	public Major() {
 	}
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
-	
-	@Column
-	private String name;
-	
-	@OneToMany(mappedBy="major", targetEntity=Candidate.class)	
-	private List<Candidate> candidates = new ArrayList<>();
 
 	public Major(String name) {
 		this.name = name;
 	}
 
-	private void setID(long value) {
+	private void setID(String value) {
 		this.ID = value;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return ID;
 	}
 	
@@ -49,10 +47,14 @@ public class Major implements Serializable {
 	public List<Candidate> getCandidates() {
 		return candidates;
 	}
-	
-	
+
+
+	@Override
 	public String toString() {
-		return String.valueOf(getID());
+		return "Major{" +
+				"ID='" + ID + '\'' +
+				", name='" + name + '\'' +
+				", candidates=" + candidates +
+				'}';
 	}
-	
 }

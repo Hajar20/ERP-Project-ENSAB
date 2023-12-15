@@ -1,33 +1,31 @@
 package com.erp.ensab.entities;
-import jakarta.persistence.*;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.*;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name="Responsable")
+@Document(collection = "Responsable")
 public class Responsable implements Serializable {
+	@Id
+	private String ID;
+	@Indexed(unique = true)
+	private String email;
+	private String password;
+	private String username;
+
+	@DBRef
+	private List<Criteria> criterias = new ArrayList<>();
+
+	@DBRef
+	private List<Post> posts = new ArrayList<>();
+
 	public Responsable() {
 	}
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
-	
-	@Column
-	private String email;
-	
-	@Column
-	private String password;
-	
-	@Column
-	private String username;
-	
-	@OneToMany(mappedBy="responsable", targetEntity=com.erp.ensab.entities.Criteria.class)
-	private List<Criteria> criterias = new ArrayList<>();
-	
-	@OneToMany(mappedBy="responsable", targetEntity=com.erp.ensab.entities.Post.class)
-	private List<Post> posts = new ArrayList<>();
 
 	public Responsable(String email, String password, String username) {
 		this.email = email;
@@ -35,59 +33,61 @@ public class Responsable implements Serializable {
 		this.username = username;
 	}
 
-	private void setID(long value) {
-		this.ID = value;
-	}
-	
-	public long getID() {
+	public String getID() {
 		return ID;
 	}
-	
 
-	public void setEmail(String value) {
-		this.email = value;
+	public void setID(String ID) {
+		this.ID = ID;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
-	public void setPassword(String value) {
-		this.password = value;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
-	public void setUsername(String value) {
-		this.username = value;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
-	
-	public void setCriterias(List<Criteria> value) {
-		this.criterias = value;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	
+
 	public List<Criteria> getCriterias() {
 		return criterias;
 	}
-	
-	
-	public void setPosts(List<Post> value) {
-		this.posts = value;
+
+	public void setCriterias(List<Criteria> criterias) {
+		this.criterias = criterias;
 	}
-	
+
 	public List<Post> getPosts() {
 		return posts;
 	}
-	
-	
-	public String toString() {
-		return String.valueOf(getID());
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Responsable{" +
+				"ID='" + ID + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", username='" + username + '\'' +
+				'}';
+	}
 }

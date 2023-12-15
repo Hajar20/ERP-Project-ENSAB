@@ -1,52 +1,41 @@
 package com.erp.ensab.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.*;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name="Criteria")
-public class Criteria implements Serializable {
+@Document(collection = "Criteria")
+public class Criteria  {
 	public Criteria() {
 	}
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
-	@JsonIgnore
-	@ManyToOne(targetEntity=com.erp.ensab.entities.Responsable.class, fetch=FetchType.LAZY)
-	@JoinColumn(name = "Responsable")
+	private String ID; // Changed to String for MongoDB ObjectId compatibility
+
+	@DBRef
 	private Responsable responsable;
-	
-	@Column
+
 	private int year;
 
-	@Column
 	private Date startDate;
-	
-	@Column
-	private Date endDate;
-	
-	@Column
-	private float threshold1;
-	
-	@Column
-	private float threshold2;
-	
-	@Column
-	private float threshold3;
-	
-	@Column(length = 2000)
-	private String details;
-	
-	@OneToMany(mappedBy="criteria", targetEntity=com.erp.ensab.entities.MajorPlaces.class, fetch=FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<MajorPlaces> majorPlaces = new ArrayList<>();
 
-	public Criteria(Responsable responsable, int year, Date startDate, Date endDate, float threshold1, float threshold2, float threshold3, String details) {
-		this.responsable = responsable;
+	private Date endDate;
+
+	private float threshold1;
+
+	private float threshold2;
+
+	private float threshold3;
+
+	private String details;
+
+	@DBRef
+	private List<MajorPlaces> majorPlaces=new ArrayList<>();
+
+	public Criteria(int year, Date startDate, Date endDate,
+					float threshold1, float threshold2, float threshold3, String details) {
 		this.year = year;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -56,18 +45,14 @@ public class Criteria implements Serializable {
 		this.details = details;
 	}
 
-	private void setID(long value) {
+	private void setID(String value) {
 		this.ID = value;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return ID;
 	}
-	
-	public long getORMID() {
-		return getID();
-	}
-	
+
 	public void setYear(int value) {
 		this.year = value;
 	}
@@ -140,10 +125,22 @@ public class Criteria implements Serializable {
 	public List<MajorPlaces> getMajorPlaces() {
 		return majorPlaces;
 	}
-	
-	
+
+	@Override
 	public String toString() {
-		return String.valueOf(getID());
+		return "Criteria{" +
+				"ID='" + ID + '\'' +
+				", responsable=" + responsable +
+				", year=" + year +
+				", startDate=" + startDate +
+				", endDate=" + endDate +
+				", threshold1=" + threshold1 +
+				", threshold2=" + threshold2 +
+				", threshold3=" + threshold3 +
+				", details='" + details + '\'' +
+				", majorPlaces=" + majorPlaces +
+				'}';
 	}
+
 	
 }

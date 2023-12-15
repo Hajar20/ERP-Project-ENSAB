@@ -1,34 +1,27 @@
 package com.erp.ensab.entities;
-import jakarta.persistence.*;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.*;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name="Bac")
-public class Bac implements Serializable {
+@Document(collection = "Bac")
+public class Bac  {
 	public Bac() {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
-	
-	@OneToOne(targetEntity=com.erp.ensab.entities.Candidate.class, fetch=FetchType.LAZY)
-	@JoinColumns({ @JoinColumn(name="CandidateID") })
+	private String ID;
+
+	@DBRef
 	private Candidate candidate;
 	
-	@Column
 	private String type;
 	
-	@Column
 	private String option;
 	
-	@Column
 	private Date dateObtaining;
 	
-	@Column
 	private String distinction;
 
 	public Bac(Candidate candidate, String type, String option, Date dateObtaining, String distinction) {
@@ -39,11 +32,11 @@ public class Bac implements Serializable {
 		this.distinction = distinction;
 	}
 
-	private void setID(long value) {
+	private void setID(String value) {
 		this.ID = value;
 	}
 	
-	public long getID() {
+	public String getID() {
 		return ID;
 	}
 	
@@ -89,8 +82,16 @@ public class Bac implements Serializable {
 		return candidate;
 	}
 	
+	@Override
 	public String toString() {
-		return String.valueOf(getID());
+		return "Bac{" +
+				"ID='" + ID + '\'' +
+				", candidate=" + candidate +
+				", type='" + type + '\'' +
+				", option='" + option + '\'' +
+				", dateObtaining=" + dateObtaining +
+				", distinction='" + distinction + '\'' +
+				'}';
 	}
 	
 }
