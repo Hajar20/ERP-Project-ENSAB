@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @ToString
-@Document(collection = "Degree")
+@Document(collection = "degrees")
 public class Degree {
 	@Id
 	private String ID; // Changed to String for MongoDB ObjectId compatibility

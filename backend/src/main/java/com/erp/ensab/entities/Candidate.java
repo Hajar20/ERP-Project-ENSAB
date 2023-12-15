@@ -13,7 +13,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Document(collection = "Candidate")
+@Document(collection = "candidates")
 public class Candidate {
 
 	@Id

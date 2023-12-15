@@ -1,4 +1,5 @@
 package com.erp.ensab.entities;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,10 +14,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-@Document(collection = "Major")
+@Document(collection = "majors")
 public class Major {
 	@Id
 	private String ID;
+
 
 	private String name;
 

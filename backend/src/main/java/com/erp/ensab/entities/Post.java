@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @ToString
-@Document(collection = "Post")
+@Document(collection = "posts")
 public class Post implements Serializable {
 	@Id
 	private String id;

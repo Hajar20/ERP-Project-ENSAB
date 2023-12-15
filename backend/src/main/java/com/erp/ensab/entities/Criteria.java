@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-@Document(collection = "Criteria")
+@Document(collection = "criterias")
 public class Criteria  {
 	@Id
 	private String ID; // Changed to String for MongoDB ObjectId compatibility

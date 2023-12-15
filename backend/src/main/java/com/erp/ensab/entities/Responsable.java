@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-@Document(collection = "Responsable")
+@Document(collection = "responsables")
 public class Responsable implements Serializable {
 	@Id
 	private String ID;

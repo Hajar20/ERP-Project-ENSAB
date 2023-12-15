@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 @Setter
 @NoArgsConstructor
 @ToString
-@Document(collection = "MajorPlaces")
+@Document(collection = "majorPlaces")
 public class MajorPlaces {
 	@Id
 	private String id;
