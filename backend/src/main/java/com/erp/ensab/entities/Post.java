@@ -24,6 +24,7 @@ public class Post implements Serializable {
 	private String title;
 	private String details;
 	private String file;
+	private Date publishDate;
 
 	public Post(String title, String details, String file) {
 		this.title = title;
