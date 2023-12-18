@@ -33,7 +33,11 @@
               "src/assets/css/fontawesome.css",
               "src/assets/css/owl.css",
               "src/assets/css/lightbox.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css",
+              "src/assets/css/util.css",
+              "src/assets/css/main.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -46,7 +50,10 @@
               "src/assets/js/lightbox.js",
               "src/assets/js/owl-carousel.js",
               "src/assets/js/isotope.min.js",
-              "src/assets/js/custom.js"
+              "src/assets/js/custom.js",
+
+              "src/vendor/jquery/jquery-3.2.1.min.js"
+
             ]
           },
           "configurations": {
