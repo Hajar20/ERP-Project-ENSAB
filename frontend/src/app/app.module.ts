@@ -8,18 +8,25 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ListOfNewsComponent } from './list-of-news/list-of-news.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ResponsableContentComponent } from './responsable-content/responsable-content.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListOfNewsComponent,
     LoginFormComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ResponsableContentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
