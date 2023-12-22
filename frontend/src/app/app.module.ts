@@ -11,13 +11,17 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ResponsableContentComponent } from './responsable-content/responsable-content.component';
+
+import { MainContentComponent } from './main-content/main-content.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListOfNewsComponent,
     LoginFormComponent,
     PortfolioComponent,
-    ResponsableContentComponent
+    ResponsableContentComponent,
+
+    MainContentComponent,
   ],
   imports: [
     BrowserModule,
