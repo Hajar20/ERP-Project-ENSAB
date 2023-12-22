@@ -13,7 +13,9 @@ const httpOptions = {
 export class AppService {
 
   constructor(private http : HttpClient) {}
-
+  getAllcriterias()  {
+    return this.http.get(baseURL +'getAllCriteria');
+  }
   login(email: any, password: any): Observable<any> {
     return this.http.post(
       baseURL + 'signin',
@@ -23,6 +25,6 @@ export class AppService {
       },
       httpOptions
     );
-  }
+  };
 
 }

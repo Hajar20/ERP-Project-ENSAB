@@ -20,7 +20,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -37,11 +39,69 @@ public class API {
     ResponsableRepository responsableRepository;
 
     @Autowired
+    CriteriaRepository criteriaRepository;
+
+
+    @Autowired
     PasswordEncoder encoder;
 
     @Autowired
     JwtUtils jwtUtils;
 
+    //Manipulating criteria a criteria
+    @PostMapping("/addCriteria/{id}")
+    public ResponseEntity<Criteria> saveCriteria(@RequestBody Criteria criteria,@PathVariable String id){
+
+        Responsable res = responsableRepository.findById(id).get();
+        criteria.setResponsable(res);
+
+        return ResponseEntity.ok(criteriaRepository.save(criteria));
+    }
+    @PutMapping("/updateCriteria/{id}")
+    public ResponseEntity<Criteria> updateCriteria(@RequestBody Criteria newC,@PathVariable String id){
+        Criteria c = criteriaRepository.findById(id).get();
+        c.setLink(newC.getLink());
+        c.setDetails(newC.getDetails());
+        c.setEndDate(newC.getEndDate());
+        c.setStartDate(newC.getStartDate());
+        c.setMajorPlaces(newC.getMajorPlaces());
+        c.setThreshold2(newC.getThreshold2());
+        c.setThreshold3(newC.getThreshold3());
+        c.setThreshold1(newC.getThreshold1());
+        Criteria updatedC = criteriaRepository.save(c);
+
+        return ResponseEntity.ok(updatedC);
+    }
+    @GetMapping("/getAllCriteria")
+    public List<Criteria> getAllCriteria() {
+        return criteriaRepository.findAll();
+    }
+    @GetMapping("/getCriteriaByResp/{id}")
+    public  Criteria getCriteriaByResp(@PathVariable String id){
+        return criteriaRepository.findCriteriaByResponsableID(id);
+    }
+    @GetMapping("/getCriteria/{id}")
+    public  Criteria getCriteria(@PathVariable String id){
+        return criteriaRepository.findById(id).get();
+    }
+    @DeleteMapping("/removeCriteria/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteCriteria(@PathVariable String id){
+        Criteria c = criteriaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("CriteriaNotFoundException"));
+        criteriaRepository.delete(c);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Criteria deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
+    @DeleteMapping("/removeAllCriteria")
+    public ResponseEntity<Map<String, Boolean>> deleteAllCriteria(){
+
+        criteriaRepository.deleteAll();
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Criterias deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
+    //-----------------------------------------------------------------------
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (responsableRepository.existsByEmail(signUpRequest.getEmail())) {

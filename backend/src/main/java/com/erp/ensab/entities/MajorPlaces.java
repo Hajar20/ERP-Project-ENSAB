@@ -24,7 +24,7 @@ public class MajorPlaces {
 
 	private int places;
 
-	public MajorPlaces(Criteria criteria, String name, int places) {
+	public MajorPlaces(String name, int places) {
 		this.criteria = criteria;
 		this.name = name;
 		this.places = places;
