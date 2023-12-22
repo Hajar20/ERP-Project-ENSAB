@@ -21,9 +21,11 @@ public class Degree {
 	@DBRef
 	private Candidate candidate;
 
-	private String type;
+	private String type; // DUT ou DUEG ...
 
-	private String speciality;
+	private String speciality; // GI ,Energie ...
+
+	private String degreeType; // Bac+2 ou Bac+3
 
 	private Date diplomaDate;
 
@@ -41,7 +43,7 @@ public class Degree {
 
 	private String college;
 
-	public Degree(Candidate candidate, String type, String speciality, Date diplomaDate, float s1, float s2, float s3, float s4, float s5, float s6, String college) {
+	public Degree(Candidate candidate, String type, String degreeType, String speciality, Date diplomaDate, float s1, float s2, float s3, float s4, float s5, float s6, String college) {
 		this.candidate = candidate;
 		this.type = type;
 		this.speciality = speciality;
@@ -53,6 +55,7 @@ public class Degree {
 		this.s5 = s5;
 		this.s6 = s6;
 		this.college = college;
+		this.degreeType=degreeType;
 	}
 
 }
