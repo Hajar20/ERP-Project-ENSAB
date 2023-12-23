@@ -13,7 +13,12 @@ const httpOptions = {
 export class AppService {
 
   constructor(private http : HttpClient) {}
-
+  getAllcriterias()  {
+    return this.http.get(baseURL +'getAllCriteria');
+  }
+  getCriteriaById(id:any){
+    return this.http.get(`${baseURL}getCriteria/${id}`);
+  }
   login(email: any, password: any): Observable<any> {
     return this.http.post(
       baseURL + 'signin',
@@ -23,6 +28,6 @@ export class AppService {
       },
       httpOptions
     );
-  }
+  };
 
 }

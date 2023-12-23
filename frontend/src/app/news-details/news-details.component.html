@@ -1,0 +1,85 @@
+<!--<a (click)="goToPortfolioAndRefresh()" title="Go to home page" href="#" style="margin-left: 48%;color: black;font-size: xx-large;">
+    <i class="fa fa-home"></i>
+</a> -->
+
+<section class="section contact" style="background-image: url('assets/images/main-slider-02.jpg');background-repeat: no-repeat;height: 200px;background-size: cover;">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="section-heading">
+                    <h2>Details</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section contact" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" style="color: white">
+                <br>
+                <h4 style="">CALL FOR APPLICATIONS: Competitive examination for entry into the 3rd year
+                    (1st Year of the Engineering Cycle) University Year {{collection.year}}-{{collection.year + 1}} :</h4>
+<br>
+                <div style="color: orange" >
+                   <a style="color: white"> Published on : </a>   <i class="fa fa-calendar">  {{ collection.publisDate | date: 'yyyy-MM-dd' }}</i>
+                </div>
+                <br><br>
+                <p style="font-size: large;color: white">
+                    Students are informed that the National School of Applied Sciences of Berrechid (ENSA – Berrechid) is organizing
+                    the 3rd year entrance exam (1st year of the Engineering Cycle) A.U {{collection.year}}-{{collection.year+1}} :
+                </p>
+                <br>
+                <ol type="I">
+                  <li style="background-color: #33CCFF"> I.  Baccalaureate criteria :</li>
+                    <p style="font-size: large;color: white">Applicants must have a scientific, technical or professional baccalaureate.<br>
+                        Possible options: sc math, pc, svt, ste, ... etc</p>
+                    <br>
+                    <li style="background-color: #33CCFF">II.  Diploma criteria :</li>
+                    <p style="font-size: large;color: white">Obtaining the bac + 2 (DUT, DEUG, DEUST, DTS, DEUP, other) in at most 3 years, and for The bac + 3 (LP, LF, LST, other)
+                        in at most 4 years</p>
+                    <br><br>
+                    <p style="font-size: large;color: white">
+                        {{collection.details}}
+                    </p>
+                    <br><br>
+                    <li style="background-color: #33CCFF">III.  The majors concerned :</li><br>
+                    <table >
+                        <tr style="background-color: black">
+                            <th>Majors</th>
+                            <th>Available places</th>
+                        </tr>
+                        <tr *ngFor="let mp of collection.majorPlaces">
+                            <td>{{mp.Major}} </td>
+                            <td>{{mp.places}}</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <div *ngIf="!isVisible(collection.endDate); else elseBlock">
+                        <li>Link below takes you to the form to submit your application :</li>
+                        <div style="background-color: #44aaee;">
+                            <a href="https://github.com/Hajar20/ERP-Project-ENSAB" style="text-decoration: underline;color: white;font-size: large" target="_blank">
+                                https://github.com/Hajar20/ERP-Project-ENSAB
+                            </a>
+                        </div>
+                    </div>
+
+                    <ng-template #elseBlock>
+                        <li>The link is no longer available, the Pre-registration is done :</li>
+                        <div style="background-color: #44aaee;">
+                            <a  style="text-decoration: underline;color: white;font-size: large"  disabled>
+                                https://github.com/Hajar20/ERP-Project-ENSAB
+                            </a>
+                        </div>
+                    </ng-template>
+
+
+                </ol>
+<br><br>
+                <div style="background-color: red"><strong>Pre-registration starts : </strong><u>{{collection.startDate | date: 'yyyy-MM-dd' }}</u> <strong> And ends : </strong> <u>{{collection.endDate | date: 'yyyy-MM-dd' }}</u></div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

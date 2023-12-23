@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule , Title} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,18 +10,54 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ResponsableContentComponent } from './responsable-content/responsable-content.component';
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { MainContentComponent } from './main-content/main-content.component';
+import { NewsDetailsComponent } from './news-details/news-details.component';
+
+import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
+
+import {
+  AvatarModule,
+  BadgeModule,
+  BreadcrumbModule,
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FooterModule,
+  FormModule,
+  GridModule,
+  HeaderModule,
+  ListGroupModule,
+  NavModule,
+  ProgressModule,
+  SharedModule,
+  SidebarModule,
+  TabsModule,
+  UtilitiesModule
+} from '@coreui/angular';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
+
+
+const APP_CONTAINERS = [
+  DefaultFooterComponent,
+  DefaultHeaderComponent,
+  DefaultLayoutComponent
+];
 @NgModule({
   declarations: [
     AppComponent,
     ListOfNewsComponent,
     LoginFormComponent,
     PortfolioComponent,
-    ResponsableContentComponent,
-
     MainContentComponent,
+     NewsDetailsComponent,
+    DefaultFooterComponent,
+    DefaultHeaderComponent,
+    DefaultLayoutComponent
+
   ],
   imports: [
     BrowserModule,
@@ -30,9 +66,37 @@ import { MainContentComponent } from './main-content/main-content.component';
     CarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AvatarModule,
+    BreadcrumbModule,
+    FooterModule,
+    DropdownModule,
+    GridModule,
+    HeaderModule,
+    SidebarModule,
+    IconModule,
+    NavModule,
+    ButtonModule,
+    UtilitiesModule,
+    ButtonGroupModule,
+    SidebarModule,
+    SharedModule,
+    TabsModule,
+    ListGroupModule,
+    ProgressModule,
+    BadgeModule,
+    ListGroupModule,
+    CardModule,
+    NgScrollbarModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    IconSetService,
+    Title
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,14 @@
   "projects": {
     "frontend": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -37,7 +44,8 @@
               "src/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
               "src/assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css",
               "src/assets/css/util.css",
-              "src/assets/css/main.css"
+              "src/assets/css/main.css",
+              "src/scss/styles.scss"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",

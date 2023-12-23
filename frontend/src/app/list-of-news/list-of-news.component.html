@@ -1,78 +1,24 @@
 
 <owl-carousel-o [options]="customOptions">
-  <ng-template carouselSlide>
-    <div class="item">
-      <img src="assets/images/courses-02.jpg" alt="Course #2">
+  <ng-template carouselSlide *ngFor="let l of collection">
+   <a routerLink="/details/{{l.id}}">
+     <div class="item">
+      <img src="{{path+randomImage}}" alt="Course #2">
       <div class="down-content">
-        <h4>Business World</h4>
-        <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac ipsum porta.</p>
-        <div class="author-image">
-          <img src="assets/images/author-02.png" alt="Author 2">
+        <h4>CALL FOR APPLICATIONS: Competitive examination for entry into the 3rd year (1st Year of the Engineering Cycle) University Year 2023-2024</h4>
+        <p>
+          Students are informed that the National School of Applied Sciences of Berrechid (ENSA – Berrechid) is organizing
+          the 3rd year entrance exam (1st year of the Engineering Cycle) A.U {{l.year - 1}}/{{l.year}}:
+          </p>
+
+        <div style="color: orange" >
+          <i class="fa fa-calendar"> {{ l.publisDate | date: 'yyyy-MM-dd' }}</i>
+          <a routerLink="/details" style="color: orange;float: right">More ... <i class="fa fa-angle-double-right"></i></a>
         </div>
-        <div class="text-button-free">
-          <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
-        </div>
+
       </div>
     </div>
+   </a>
   </ng-template>
-  <ng-template carouselSlide>
-    <div class="item">
-      <img src="assets/images/courses-01.jpg" alt="Course #1">
-      <div class="down-content">
-        <h4>Digital Marketing</h4>
-        <p>You can get free images and videos for your websites by visiting Unsplash, Pixabay, and Pexels.</p>
-        <div class="author-image">
-          <img src="assets/images/author-01.png" alt="Author 1">
-        </div>
-        <div class="text-button-pay">
-          <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-  <ng-template carouselSlide>
-    <div class="item">
-      <img src="assets/images/courses-03.jpg" alt="Course #3">
-      <div class="down-content">
-        <h4>Media Technology</h4>
-        <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus lobortis enim.</p>
-        <div class="author-image">
-          <img src="assets/images/author-03.png" alt="Author 3">
-        </div>
-        <div class="text-button-pay">
-          <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-  <ng-template carouselSlide>
-    <div class="item">
-      <img src="assets/images/courses-04.jpg" alt="Course #4">
-      <div class="down-content">
-        <h4>Communications</h4>
-        <p>Download free images and videos for your websites by visiting Unsplash, Pixabay, and Pexels.</p>
-        <div class="author-image">
-          <img src="assets/images/author-04.png" alt="Author 4">
-        </div>
-        <div class="text-button-free">
-          <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-  <ng-template carouselSlide>
-    <div class="item">
-      <img src="assets/images/courses-05.jpg" alt="">
-      <div class="down-content">
-        <h4>Business Ethics</h4>
-        <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus lobortis enim.</p>
-        <div class="author-image">
-          <img src="assets/images/author-05.png" alt="">
-        </div>
-        <div class="text-button-pay">
-          <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </ng-template>
+
 </owl-carousel-o>
