@@ -12,7 +12,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
-import { MainContentComponent } from './main-content/main-content.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
@@ -52,7 +51,6 @@ const APP_CONTAINERS = [
     ListOfNewsComponent,
     LoginFormComponent,
     PortfolioComponent,
-    MainContentComponent,
      NewsDetailsComponent,
     DefaultFooterComponent,
     DefaultHeaderComponent,
@@ -90,10 +88,7 @@ const APP_CONTAINERS = [
     NgScrollbarModule
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    },
+   
     IconSetService,
     Title
   ],

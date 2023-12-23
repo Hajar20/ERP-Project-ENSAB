@@ -10,9 +10,10 @@ const routes: Routes = [
     path: '',
     component: PortfolioComponent
   },
+
   {
     path: 'home',
-    redirectTo: 'dashboard',
+    redirectTo: 'pages/poster',
   },
   {
     path: '',
@@ -47,9 +48,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'top',
-    anchorScrolling: 'enabled',
-    initialNavigation: 'enabledBlocking'
+
     }
   )
   ],

@@ -43,7 +43,7 @@
     </button>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
       <li>
-        <a routerLink="./" cDropdownItem>
+        <a style="cursor: pointer" (click)="logout()"  cDropdownItem>
           <svg cIcon class="me-2" name="cilLockLocked"></svg>
           Logout
         </a>
