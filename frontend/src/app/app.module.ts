@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ResponsableContentComponent } from './responsable-content/responsable-content.component';
 
 import { MainContentComponent } from './main-content/main-content.component';
+import { NewsDetailsComponent } from './news-details/news-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { MainContentComponent } from './main-content/main-content.component';
     ResponsableContentComponent,
 
     MainContentComponent,
+     NewsDetailsComponent,
   ],
   imports: [
     BrowserModule,

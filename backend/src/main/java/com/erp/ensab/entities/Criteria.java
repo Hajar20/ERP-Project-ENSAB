@@ -24,7 +24,7 @@ public class Criteria  {
 	@DBRef(lazy = false)
 	private Responsable responsable;
 
-	private int year = new Date().getYear();
+	private int year = new Date().getYear()+1900;
 
 	private Date startDate;
 

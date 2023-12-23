@@ -16,6 +16,9 @@ export class AppService {
   getAllcriterias()  {
     return this.http.get(baseURL +'getAllCriteria');
   }
+  getCriteriaById(id:any){
+    return this.http.get(`${baseURL}getCriteria/${id}`);
+  }
   login(email: any, password: any): Observable<any> {
     return this.http.post(
       baseURL + 'signin',

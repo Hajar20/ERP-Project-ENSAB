@@ -42,6 +42,7 @@ export class ListOfNewsComponent implements OnInit{
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+    //console.log('selected image : ',array.length > 0 ? array[0] : "pic.jpeg")
     return array.length > 0 ? array[0] : "pic.jpeg";
   }
 
@@ -54,12 +55,13 @@ export class ListOfNewsComponent implements OnInit{
   fetchList(): void {
     this.app.getAllcriterias().subscribe((res) => {
       this.collection = res;
-      console.log('criterias : ',this.collection)
+      //console.log('criterias : ',this.collection)
       /*this.collection.forEach((criteria:any) => {
         console.log('majorPlaces for a criteria:', criteria['majorPlaces']);
 
       });*/
     });
+
 
   }
 
