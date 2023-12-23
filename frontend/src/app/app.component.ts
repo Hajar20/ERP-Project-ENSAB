@@ -1,15 +1,20 @@
 
 import { Component} from '@angular/core';
+import { IconSetService } from '@coreui/icons-angular';
+import { iconSubset } from './icons/icon-subset';
 
-import { OwlOptions } from 'ngx-owl-carousel-o';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+@Component({  selector: 'app-root',
+  template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
 
-  constructor() { }
+
   ngOnInit(): void {}
+  constructor(
+
+    private iconSetService: IconSetService
+  ) {
+
+    iconSetService.icons = { ...iconSubset };
+  }
 }

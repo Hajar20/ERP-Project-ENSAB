@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginFormComponent} from "./login-form/login-form.component";
 import {PortfolioComponent} from "./portfolio/portfolio.component";
-import {ResponsableContentComponent} from "./responsable-content/responsable-content.component";
 import {NewsDetailsComponent} from "./news-details/news-details.component";
+import { DefaultLayoutComponent } from './containers';
 
 const routes: Routes = [
   {
@@ -11,13 +11,33 @@ const routes: Routes = [
     component: PortfolioComponent
   },
   {
+    path: 'home',
+    redirectTo: 'dashboard',
+  },
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    data: {
+      title: 'Home'
+    },
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
+      },
+      {
+        path: 'pages',
+        loadChildren: () =>
+          import('./views/pages/theme.module').then((m) => m.ThemeModule)
+      },
+    ]
+  },
+  {
     path: 'authenticate',
     component: LoginFormComponent
   },
-  {
-    path : 'responsable',
-    component : ResponsableContentComponent
-  },
+
   {
     path : 'details/:id',
     component : NewsDetailsComponent
@@ -26,7 +46,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'top',
+    anchorScrolling: 'enabled',
+    initialNavigation: 'enabledBlocking'
+    }
+  )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

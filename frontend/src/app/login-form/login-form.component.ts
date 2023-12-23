@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit{
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         //this.reloadPage();
-        this.router.navigate(['/responsable']);
+        this.router.navigate(['/home']);
       },
       error: err => {
         this.errorMessage = err.error.message;
