@@ -53,7 +53,7 @@ export class LoginFormComponent implements OnInit{
 
   goToPortfolioAndRefresh() {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['']);
     });
   }
 }

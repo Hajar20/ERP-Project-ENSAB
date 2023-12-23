@@ -88,10 +88,7 @@ const APP_CONTAINERS = [
     NgScrollbarModule
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    },
+   
     IconSetService,
     Title
   ],
