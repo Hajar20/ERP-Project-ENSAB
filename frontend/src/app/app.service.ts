@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {StorageService} from "./storage.service";
 
 const baseURL = "http://localhost:8080/system/api/"
 const httpOptions = {
@@ -12,12 +13,27 @@ const httpOptions = {
 
 export class AppService {
 
-  constructor(private http : HttpClient) {}
+  constructor(private http : HttpClient, private storage: StorageService) {}
   getAllcriterias()  {
     return this.http.get(baseURL +'getAllCriteria');
   }
   getCriteriaById(id:any){
     return this.http.get(`${baseURL}getCriteria/${id}`);
+  }
+  addCriteria(criteria : any){
+    return this.http.post(
+        `${baseURL}addCriteria/${this.storage.getUser().id}`,
+        {
+          "startDate": criteria.startDate,
+          "endDate": criteria.endDate,
+          "threshold1": criteria.threshold1,
+          "threshold2": criteria.threshold2,
+          "threshold3": criteria.threshold3,
+          "details": criteria.details,
+          "link": criteria.link,
+          "majorPlaces": criteria.majorPlaces
+        }
+    )
   }
   login(email: any, password: any): Observable<any> {
     return this.http.post(

@@ -48,7 +48,9 @@ public class API {
     @Autowired
     JwtUtils jwtUtils;
 
-    //Manipulating criteria a criteria
+    //Manipulating posts
+
+    //Manipulating a criteria
     @PostMapping("/addCriteria/{id}")
     public ResponseEntity<Criteria> saveCriteria(@RequestBody Criteria criteria,@PathVariable String id){
 
