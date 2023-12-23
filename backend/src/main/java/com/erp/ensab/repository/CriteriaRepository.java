@@ -1,2 +1,5 @@
-package com.erp.ensab.repository;public interface CriteriaRepository {
+package com.erp.ensab.repository;
+
+
+public interface CriteriaRepository {
 }

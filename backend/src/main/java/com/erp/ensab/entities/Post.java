@@ -1,9 +1,8 @@
 package com.erp.ensab.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,6 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Document(collection = "posts")
+@AllArgsConstructor
+@Builder
 public class Post implements Serializable {
 	@Id
 	private String id;
@@ -27,10 +28,5 @@ public class Post implements Serializable {
 	private String file;
 	private Date publishDate;
 
-	public Post(String title, String details, String file) {
-		this.title = title;
-		this.details = details;
-		this.file = file;
-	}
 
 }

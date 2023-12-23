@@ -1,9 +1,8 @@
 package com.erp.ensab.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -15,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Document(collection = "majors")
+@Builder
+@AllArgsConstructor
 public class Major {
 	@Id
 	private String ID;
@@ -25,9 +26,6 @@ public class Major {
 	@DBRef
 	private List<Candidate> candidates = new ArrayList<>();
 
-	public Major(String name) {
-		this.name = name;
-	}
 
 
 }

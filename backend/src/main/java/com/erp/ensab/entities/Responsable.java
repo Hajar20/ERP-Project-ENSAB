@@ -1,9 +1,8 @@
 package com.erp.ensab.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Document(collection = "responsables")
+@AllArgsConstructor
+@Builder
 public class Responsable implements Serializable {
 	@Id
 	private String ID;

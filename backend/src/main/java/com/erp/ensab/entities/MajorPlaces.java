@@ -1,9 +1,8 @@
 package com.erp.ensab.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -13,6 +12,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 @NoArgsConstructor
 @ToString
 @Document(collection = "majorPlaces")
+@AllArgsConstructor
+@Builder
 public class MajorPlaces {
 	@Id
 	private String id;
@@ -24,10 +25,5 @@ public class MajorPlaces {
 
 	private int places;
 
-	public MajorPlaces(Criteria criteria, String name, int places) {
-		this.criteria = criteria;
-		this.name = name;
-		this.places = places;
-	}
 
 }

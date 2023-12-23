@@ -1,9 +1,8 @@
 package com.erp.ensab.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.*;
@@ -14,6 +13,8 @@ import java.util.*;
 @NoArgsConstructor
 @ToString
 @Document(collection = "candidates")
+@Builder
+@AllArgsConstructor
 public class Candidate {
 
 	@Id
@@ -41,17 +42,5 @@ public class Candidate {
 
 	private Bac bac;
 
-	public Candidate(Major major, String cne, String firstname, String lastname, Date birthdate, String cni, long phone, char sexe, Bac bac) {
-		this.major = major;
-		this.cne = cne;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.birthdate = birthdate;
-		this.cni = cni;
-		this.phone = phone;
-		this.sexe = sexe;
-		this.bac = bac;
-	}
 
-	
 }

@@ -1,4 +1,6 @@
 package com.erp.ensab.entities;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.*;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -10,6 +12,8 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Document(collection = "Bac")
+@AllArgsConstructor
+@Builder
 public class Bac  {
 
 
@@ -27,12 +31,6 @@ public class Bac  {
 	
 	private String distinction;
 
-	public Bac(Candidate candidate, String type, String option, Date dateObtaining, String distinction) {
-		this.candidate = candidate;
-		this.type = type;
-		this.option = option;
-		this.dateObtaining = dateObtaining;
-		this.distinction = distinction;
-	}
+
 
 }
