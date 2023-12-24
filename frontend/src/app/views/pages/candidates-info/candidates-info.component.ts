@@ -13,6 +13,10 @@ export class CandidatesInfoComponent implements OnInit {
 
   
   candidates:any =  [];
+  currentPage = 1;
+  itemsPerPage = 5;
+
+  
   constructor(private inscriptionService: InscriptionServiceService) { 
     this.inscriptionService.getCandidates().subscribe((data: any) => {
       this.candidates = data;
@@ -37,7 +41,6 @@ export class CandidatesInfoComponent implements OnInit {
     const logoY = 10;
     doc.addImage(imgData, 'JPEG', logoX, logoY, logoWidth, logoHeight);
   
-
     doc.text('Selected candidates', 20, 15);
     doc.setFontSize(12);
     doc.text(new Date().toLocaleDateString(), 20, 24);
@@ -75,6 +78,35 @@ export class CandidatesInfoComponent implements OnInit {
     // Save the PDF
     doc.save('candidates.pdf');
   
+  }
+
+
+  // pagenation
+
+  get paginatedCandidates() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.candidates.slice(startIndex, endIndex);
+  }
+
+  onNextPage() {
+    if (this.hasNextPage()) {
+      this.currentPage++;
+    }
+  }
+
+  onPrevPage() {
+    if (this.hasPrevPage()) {
+      this.currentPage--;
+    }
+  }
+
+  hasNextPage(): boolean {
+    return this.currentPage < Math.ceil(this.candidates.length / this.itemsPerPage);
+  }
+
+  hasPrevPage(): boolean {
+    return this.currentPage > 1;
   }
   
 }
