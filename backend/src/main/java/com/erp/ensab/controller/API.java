@@ -47,7 +47,11 @@ public class API {
     @Autowired
     JwtUtils jwtUtils;
 
-    //Manipulating posts
+    //handling posts
+    @GetMapping("/getAllPosts/{id}")
+    public Post getPost(@PathVariable String id){
+        return postRepository.findById(id).get();
+    }
     @GetMapping("/getAllPosts")
     public List<Post> getAllPosts(){
         return postRepository.findAll();

@@ -5,7 +5,8 @@ import {PortfolioComponent} from "./portfolio/portfolio.component";
 import {NewsDetailsComponent} from "./news-details/news-details.component";
 import { DefaultLayoutComponent } from './containers';
 import { InscriptionComponent } from './inscription/inscription.component';
-
+import {PostsComponent} from "./posts/posts.component";
+import {UploadComponent} from "./views/pages/upload.component";
 const routes: Routes = [
   {
     path: '',
@@ -46,8 +47,15 @@ const routes: Routes = [
   {
     path : 'details/:id',
     component : NewsDetailsComponent
+  },
+  {
+    path : 'posts/:id',
+    component : PostsComponent
+  },
+  {
+    path : 'uploadExcel',
+    component : UploadComponent
   }
-
 ];
 
 @NgModule({

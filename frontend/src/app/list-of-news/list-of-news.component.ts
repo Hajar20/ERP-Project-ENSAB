@@ -29,13 +29,12 @@ export class ListOfNewsComponent implements OnInit{
     'img1.jpg',
     'img2.jpg',
     'img3.jpg',
-    'img4,png',
+    'img4.png',
     'img5.png',
-    'img6.jpeg',
-    'img7.png'
   ];
-  randomImage: string = "";
+
   collection:any=[];
+  posts:any=[];
   path = "assets/images/"
   getRandomImage(array: string[]): string {
     for (let i = array.length - 1; i > 0; i--) {
@@ -49,20 +48,31 @@ export class ListOfNewsComponent implements OnInit{
   constructor(private app : AppService) { }
   ngOnInit(): void {
     this.fetchList()
-    this.randomImage = this.getRandomImage(this.imagesArray);
-  }
+    this.fetchListPosts()
 
+  }
+new:any=[]
+newposts:any=[]
   fetchList(): void {
     this.app.getAllcriterias().subscribe((res) => {
       this.collection = res;
-      //console.log('criterias : ',this.collection)
-      /*this.collection.forEach((criteria:any) => {
-        console.log('majorPlaces for a criteria:', criteria['majorPlaces']);
-
-      });*/
+      this.collection.map((item:any) => {
+        const newItem = { ...item, image: this.getRandomImage(this.imagesArray) };
+        this.new.push(newItem);
+      });
+      console.log('criterias : ',this.new)
     });
 
-
+  }
+  fetchListPosts(): void {
+    this.app.getPosts().subscribe((res) => {
+      this.posts = res;
+      this.posts.map((item:any) => {
+        const newItem = { ...item, image: this.getRandomImage(this.imagesArray) };
+        this.newposts.push(newItem);
+      });
+      console.log('posts : ',this.newposts)
+    });
   }
 
 }

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ColorsComponent } from './colors.component';
 import { TypographyComponent } from './typography.component';
 import { CandidatesInfoComponent } from './candidates-info/candidates-info.component';
-
+import {UploadComponent} from "./upload.component";
 const routes: Routes = [
   {
     path: '',
@@ -31,6 +31,12 @@ const routes: Routes = [
         component: CandidatesInfoComponent,
         data: {
           title: 'Candidates',
+        },
+      },{
+        path: 'uploadExcelFile',
+        component: UploadComponent,
+        data: {
+          title: 'upload',
         },
       },
     ],

@@ -25,6 +25,12 @@ export class AppService {
           }
       )
   }
+  getPosts(){
+      return this.http.get(baseURL+'getAllPosts')
+  }
+  getPostById(id:any){
+      return this.http.get(`${baseURL}getAllPosts/${id}`);
+  }
   getAllcriterias()  {
     return this.http.get(baseURL +'getAllCriteria');
   }

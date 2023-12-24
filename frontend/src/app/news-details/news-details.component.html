@@ -1,8 +1,9 @@
-<!--<a (click)="goToPortfolioAndRefresh()" title="Go to home page" href="#" style="margin-left: 48%;color: black;font-size: xx-large;">
-    <i class="fa fa-home"></i>
-</a> -->
+<!-- -->
 
 <section class="section contact" style="background-image: url('assets/images/main-slider-02.jpg');background-repeat: no-repeat;height: 200px;background-size: cover;">
+    <a (click)="goToPortfolioAndRefresh()" title="Go to home page" href="#" style="margin-left: 49%;color: white;font-size: x-large;">
+        <i class="fa fa-home"></i>
+    </a>
     <div class="container" >
         <div class="row">
             <div class="col-md-12" >
@@ -58,8 +59,8 @@
                     <div *ngIf="!isVisible(collection.endDate); else elseBlock">
                         <li>Link below takes you to the form to submit your application :</li>
                         <div style="background-color: #44aaee;">
-                            <a href="https://github.com/Hajar20/ERP-Project-ENSAB" style="text-decoration: underline;color: white;font-size: large" target="_blank">
-                                https://github.com/Hajar20/ERP-Project-ENSAB
+                            <a href="http://localhost:4200/inscription" style="text-decoration: underline;color: white;font-size: large" target="_blank">
+                                {{collection.link}}
                             </a>
                         </div>
                     </div>
