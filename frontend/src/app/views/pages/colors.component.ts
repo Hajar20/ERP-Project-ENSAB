@@ -16,7 +16,7 @@ export class ColorsComponent implements OnInit {
     threshold1:  new FormControl('', Validators.required),
     threshold2:  new FormControl('', Validators.required),
     threshold3:  new FormControl('', Validators.required),
-    link:  new FormControl('', Validators.required),
+    link:  new FormControl('http://localhost:4200/inscription', Validators.required),
     majorPlaces : new FormArray([
         new FormGroup({
           major : new FormControl('', Validators.required) ,
@@ -55,7 +55,7 @@ onSubmit(){
             //console.warn("The criteria :", response);
              this.isFieldsEmpty = false
               this.alert=true
-            this.myForm.reset();
+             this.myForm.reset();
           },
       );
     }
