@@ -41,6 +41,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { CandidatesInfoComponent } from './views/pages/candidates-info/candidates-info.component';
 import { PostsComponent } from './posts/posts.component';
 import {UploadComponent} from "./views/pages/upload.component";
+import { ExcelComponent } from './excel/excel.component';
 
 
 
@@ -61,7 +62,8 @@ const APP_CONTAINERS = [
     DefaultHeaderComponent,
     DefaultLayoutComponent,
     InscriptionComponent,
-    PostsComponent
+    PostsComponent,
+    ExcelComponent
    ],
   imports: [
     BrowserModule,
