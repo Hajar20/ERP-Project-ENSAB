@@ -1,0 +1,34 @@
+<!-- Table -->
+<table class="table table-striped">
+  <!-- Table header -->
+  <thead>
+    <tr>
+      <th>CNE</th>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Applied major </th>
+      <th>Diploma</th>
+    </tr>
+  </thead>
+  <!-- Table body -->
+  <tbody *ngIf="candidates && candidates.length > 0; else noData">
+    <tr *ngFor="let candidate of candidates">
+      <td>{{ candidate.cne }}</td>
+      <td>{{ candidate.firstname }}</td>
+      <td>{{ candidate.lastname }}</td>
+      <td>{{ candidate.major.name }}</td>
+      <td>
+        <span *ngFor="let degree of candidate.degrees">{{ degree.type }} /</span>
+      </td>
+    </tr>
+  </tbody>
+  <!-- No data template -->
+  <ng-template #noData>
+    <tr>
+      <td colspan="4">No data available</td>
+    </tr>
+  </ng-template>
+</table>
+
+<!-- Button for PDF generation with class -->
+<button class="pdf-button" (click)="generatePDF()">Generate PDF</button>

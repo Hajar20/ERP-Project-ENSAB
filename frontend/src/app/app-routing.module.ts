@@ -4,13 +4,17 @@ import {LoginFormComponent} from "./login-form/login-form.component";
 import {PortfolioComponent} from "./portfolio/portfolio.component";
 import {NewsDetailsComponent} from "./news-details/news-details.component";
 import { DefaultLayoutComponent } from './containers';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
   {
     path: '',
     component: PortfolioComponent
   },
-
+  {
+    path: 'inscription',
+    component: InscriptionComponent
+  },
   {
     path: 'home',
     redirectTo: 'pages/poster',

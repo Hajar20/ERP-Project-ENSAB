@@ -38,6 +38,8 @@ import {
 } from '@coreui/angular';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { CandidatesInfoComponent } from './views/pages/candidates-info/candidates-info.component';
 
 
 const APP_CONTAINERS = [
@@ -46,17 +48,18 @@ const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ListOfNewsComponent,
     LoginFormComponent,
     PortfolioComponent,
      NewsDetailsComponent,
+     CandidatesInfoComponent,
     DefaultFooterComponent,
     DefaultHeaderComponent,
-    DefaultLayoutComponent
-
-  ],
+    DefaultLayoutComponent,
+      InscriptionComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
