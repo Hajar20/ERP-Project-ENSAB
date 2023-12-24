@@ -2,19 +2,13 @@ package com.erp.ensab.services.implementation;
 
 import com.erp.ensab.dtos.CandidateDTO;
 import com.erp.ensab.dtos.DegreeDTO;
-import com.erp.ensab.entities.Bac;
-import com.erp.ensab.entities.Candidate;
-import com.erp.ensab.entities.Degree;
-import com.erp.ensab.entities.Major;
+import com.erp.ensab.entities.*;
 import com.erp.ensab.exceptions.CandidateAlreadyExistsException;
 import com.erp.ensab.mapper.BacMapper;
 import com.erp.ensab.mapper.CandidateMapper;
 import com.erp.ensab.mapper.DegreeMapper;
 import com.erp.ensab.mapper.MajorMapper;
-import com.erp.ensab.repository.BacRepository;
-import com.erp.ensab.repository.CandidateRepository;
-import com.erp.ensab.repository.DegreeRepository;
-import com.erp.ensab.repository.MajorRepository;
+import com.erp.ensab.repository.*;
 import com.erp.ensab.services.InscriptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +27,9 @@ public class InscriptionServiceImpl implements InscriptionService {
     private final MajorRepository majorRepository;
     private final DegreeRepository degreeRepository;
     private final BacRepository bacRepository;
+
+    private  final  CriteriaRepository criteriaRepository;
+
 
     @Override
     public boolean  saveCandidate(CandidateDTO candidateDTO) throws CandidateAlreadyExistsException {
@@ -64,6 +61,11 @@ public class InscriptionServiceImpl implements InscriptionService {
          return true;
      }
         return false;
+    }
+
+    @Override
+    public List<Candidate> getAllCandidates() {
+        return  candidateRepository.findAll();
     }
 
     private boolean isCandidateEligible(CandidateDTO candidate) {
@@ -110,12 +112,15 @@ public class InscriptionServiceImpl implements InscriptionService {
 
 
     private boolean isDegreeEligible(DegreeDTO degree) {
+
+        Criteria  criteria = criteriaRepository.findCriteriaByYear(new Date().getYear()+1900);
+
         if ("DUT".equals(degree.getType()) || "DTS".equals(degree.getType())) {
-            return calculateAverage(degree) >= 14;
+            return calculateAverage(degree) >= criteria.getThreshold1();
         } else if ("DUEG".equals(degree.getType())  || "DUEST".equals(degree.getType()) || "DEUP".equals(degree.getType()) ) {
-            return calculateAverage(degree) >= 13;
+            return calculateAverage(degree) >= criteria.getThreshold2();
         }  else if ("LP".equals(degree.getType())  || "LF".equals(degree.getType())) {
-            return calculateAverage(degree) >= 12;
+            return calculateAverage(degree) >= criteria.getThreshold3();
         }
         return false;
     }

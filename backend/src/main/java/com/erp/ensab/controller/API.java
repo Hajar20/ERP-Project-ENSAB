@@ -20,10 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -50,7 +47,11 @@ public class API {
     @Autowired
     JwtUtils jwtUtils;
 
-    //Manipulating posts
+    //handling posts
+    @GetMapping("/getAllPosts/{id}")
+    public Post getPost(@PathVariable String id){
+        return postRepository.findById(id).get();
+    }
     @GetMapping("/getAllPosts")
     public List<Post> getAllPosts(){
         return postRepository.findAll();
@@ -94,6 +95,13 @@ public class API {
     public  Criteria getCriteriaByResp(@PathVariable String id){
         return criteriaRepository.findCriteriaByResponsableID(id);
     }
+
+    @GetMapping("/getCriteriaByDate")
+    public  Criteria getCriteriaByResp(){
+        Criteria  criteria = criteriaRepository.findCriteriaByYear(new Date().getYear()+1900);
+        return criteria;
+    }
+
     @GetMapping("/getCriteria/{id}")
     public  Criteria getCriteria(@PathVariable String id){
         return criteriaRepository.findById(id).get();
@@ -107,6 +115,7 @@ public class API {
         response.put("Criteria deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
     @DeleteMapping("/removeAllCriteria")
     public ResponseEntity<Map<String, Boolean>> deleteAllCriteria(){
 

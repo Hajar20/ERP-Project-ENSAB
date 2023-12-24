@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CriteriaRepository extends MongoRepository<Criteria,String> {
     Criteria findCriteriaByResponsableID(String id);
+
+    Criteria findCriteriaByYear(int year);
 }

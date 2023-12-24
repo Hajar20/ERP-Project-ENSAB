@@ -12,18 +12,19 @@
          <div class="form-group ">
            <label for="inputEmail3" class="col-sm-2 col-form-label">Title :</label>
            <div class="col-sm-12">
-             <input type="text" class="form-control" formControlName="title" id="inputEmail3" placeholder="Title">
+             <input type="text" class="form-control" formControlName="title" id="inputEmail3" placeholder="Title" required>
            </div>
          </div>
          <br>
          <div class="form-group">
            <label for="exampleFormControlTextarea1">Details about the publication :</label>
-           <textarea class="form-control" formControlName="details" id="exampleFormControlTextarea1" rows="3"></textarea>
+           <textarea class="form-control" formControlName="details" id="exampleFormControlTextarea1" rows="3" required></textarea>
          </div>
          <br>
          <div class="form-group">
            <label for="exampleFormControlFile1">Upload a file :&nbsp;&nbsp; </label>
-           <input type="file" formControlName="file" class="form-control-file" id="exampleFormControlFile1">
+           <input type="file" formControlName="file" class="form-control-file" id="exampleFormControlFile1" (change)="getFileDetails($event)" required>
+
          </div>
 <br>
          <input type="submit" value="publish" class="btn btn-success" style="width: 100px">
