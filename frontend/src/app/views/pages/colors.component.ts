@@ -42,7 +42,7 @@ export class ColorsComponent implements OnInit {
   isFieldsEmpty:boolean = false
   alert : boolean = false
 onSubmit(){
- 
+
     if(this.myForm.value.details === '' || this.myForm.value.startDate === '' ||
         this.myForm.value.endDate === '' || this.myForm.value.threshold1 === ''
         || this.myForm.value.threshold2 === '' || this.myForm.value.threshold3 === ''

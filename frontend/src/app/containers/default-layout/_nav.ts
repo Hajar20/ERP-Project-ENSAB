@@ -19,7 +19,6 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-description' }
   },
   {
-
     name: 'Candidates',
     url: '/pages/candidates',
     //linkProps: { fragment: 'someAnchor' },
