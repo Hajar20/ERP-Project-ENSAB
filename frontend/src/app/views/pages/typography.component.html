@@ -1,10 +1,33 @@
 <div class="fade-in">
+  <div  *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Successful !</strong> A new post has been published.
+    <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <c-card class="mb-4">
     <c-card-header>
-      Headings
+      Publish a post
     </c-card-header>
     <c-card-body>
-
+       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+         <div class="form-group ">
+           <label for="inputEmail3" class="col-sm-2 col-form-label">Title :</label>
+           <div class="col-sm-12">
+             <input type="text" class="form-control" formControlName="title" id="inputEmail3" placeholder="Title">
+           </div>
+         </div>
+         <br>
+         <div class="form-group">
+           <label for="exampleFormControlTextarea1">Details about the publication :</label>
+           <textarea class="form-control" formControlName="details" id="exampleFormControlTextarea1" rows="3"></textarea>
+         </div>
+         <br>
+         <div class="form-group">
+           <label for="exampleFormControlFile1">Upload a file :&nbsp;&nbsp; </label>
+           <input type="file" formControlName="file" class="form-control-file" id="exampleFormControlFile1">
+         </div>
+<br>
+         <input type="submit" value="publish" class="btn btn-success" style="width: 100px">
+       </form>
     </c-card-body>
   </c-card>
 

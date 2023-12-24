@@ -91,7 +91,7 @@ const APP_CONTAINERS = [
     NgScrollbarModule
   ],
   providers: [
-   
+
     IconSetService,
     Title
   ],

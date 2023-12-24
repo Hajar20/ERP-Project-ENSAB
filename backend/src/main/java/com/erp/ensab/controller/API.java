@@ -38,6 +38,8 @@ public class API {
     @Autowired
     CriteriaRepository criteriaRepository;
 
+    @Autowired
+    PostRepository postRepository;
 
     @Autowired
     PasswordEncoder encoder;
@@ -45,7 +47,19 @@ public class API {
     @Autowired
     JwtUtils jwtUtils;
 
-    //Manipulating criteria a criteria
+    //Manipulating posts
+    @GetMapping("/getAllPosts")
+    public List<Post> getAllPosts(){
+        return postRepository.findAll();
+    }
+    @PostMapping("/addPost/{id}")
+    public ResponseEntity<Post> savePosts(@RequestBody Post post, @PathVariable String id){
+        Responsable res = responsableRepository.findById(id).get();
+        post.setResponsable(res);
+
+        return  ResponseEntity.ok(postRepository.save(post));
+    }
+    //Manipulating a criteria
     @PostMapping("/addCriteria/{id}")
     public ResponseEntity<Criteria> saveCriteria(@RequestBody Criteria criteria,@PathVariable String id){
 
