@@ -19,7 +19,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'typography',
+        path: 'publication',
         component: TypographyComponent,
         data: {
           title: 'Typography',

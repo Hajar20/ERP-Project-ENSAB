@@ -13,11 +13,14 @@ import {StorageService} from "../../../storage.service";
 export class DefaultHeaderComponent extends HeaderComponent {
 
   @Input() sidebarId: string = "sidebar";
-
+  user :any = null
 
   constructor(private classToggler: ClassToggleService,private router: Router,private app : AppService,private storageService: StorageService) {
     super();
   }
+    ngOnInit() {
+        this.user = this.storageService.getUser()
+    }
   logout(){
    this.storageService.clean()
 

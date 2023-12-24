@@ -28,5 +28,11 @@ public class Post implements Serializable {
 	private String file;
 	private Date publishDate;
 
-
+	public Post(Responsable responsable, String title, String details, String file, Date publishDate) {
+		this.responsable = responsable;
+		this.title = title;
+		this.details = details;
+		this.file = file;
+		this.publishDate = publishDate;
+	}
 }

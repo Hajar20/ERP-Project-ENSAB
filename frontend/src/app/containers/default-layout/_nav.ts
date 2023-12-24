@@ -15,7 +15,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Publications',
-    url: '/pages/typography',
+    url: '/pages/publication',
     //linkProps: { fragment: 'someAnchor' },
     iconComponent: { name: 'cil-description' }
   },
