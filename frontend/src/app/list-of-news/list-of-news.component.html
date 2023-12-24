@@ -1,24 +1,42 @@
 
 <owl-carousel-o [options]="customOptions">
-  <ng-template carouselSlide *ngFor="let l of collection">
+
+  <ng-template carouselSlide *ngFor="let l of new"  >
    <a routerLink="/details/{{l.id}}">
      <div class="item">
-      <img src="{{path+randomImage}}" alt="Course #2">
+      <img src="{{path+l.image}}" alt="Course #2" >
       <div class="down-content">
         <h4>CALL FOR APPLICATIONS: Competitive examination for entry into the 3rd year (1st Year of the Engineering Cycle) University Year 2023-2024</h4>
         <p>
           Students are informed that the National School of Applied Sciences of Berrechid (ENSA – Berrechid) is organizing
           the 3rd year entrance exam (1st year of the Engineering Cycle) A.U {{l.year - 1}}/{{l.year}}:
-          </p>
-
+        </p>
         <div style="color: orange" >
           <i class="fa fa-calendar"> {{ l.publisDate | date: 'yyyy-MM-dd' }}</i>
-          <a routerLink="/details" style="color: orange;float: right">More ... <i class="fa fa-angle-double-right"></i></a>
+          <a routerLink="/details/{{l.id}}" style="color: orange;float: right">More ... <i class="fa fa-angle-double-right"></i></a>
         </div>
 
       </div>
     </div>
    </a>
   </ng-template>
+    <ng-template carouselSlide *ngFor="let l of newposts">
+        <a routerLink="/posts/{{l.id}}">
+            <div class="item">
+                <img src="{{path+l.image}}" alt="Course #2" style="">
+                <div class="down-content">
+                    <h4>{{l.title}}</h4>
+                    <p>
+                        {{l.details}}
+                    </p>
 
+                    <div style="color: orange" >
+                        <i class="fa fa-calendar"> {{ l.publishDate | date: 'yyyy-MM-dd' }}</i>
+                        <a routerLink="/posts/{{l.id}}" style="color: orange;float: right">More ... <i class="fa fa-angle-double-right"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+    </ng-template>
 </owl-carousel-o>

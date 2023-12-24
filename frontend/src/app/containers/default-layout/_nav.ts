@@ -7,7 +7,6 @@ export const navItems: INavData[] = [
     iconComponent: { name: '' },
 
   },
-
   {
     name: 'Pre-registration poster ',
     url: '/pages/poster',
@@ -20,18 +19,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-description' }
   },
   {
-    name: 'element 3',
-    url: '/url',
+    name: 'File handling',
+    url: '/pages/uploadExcelFile',
     //linkProps: { fragment: 'someAnchor' },
-    iconComponent: { name: 'cil-drop' }
+    iconComponent: { name: 'cil-file' }
   },
-  {
-    name: 'element 4',
-    url: '/url1',
-    //linkProps: { fragment: 'someAnchor' },
-    iconComponent: { name: 'cil-drop' }
-  },
-
 
 
 ];

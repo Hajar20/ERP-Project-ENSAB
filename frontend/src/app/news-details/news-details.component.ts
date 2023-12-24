@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AppService} from "../app.service";
 import {ActivatedRoute} from "@angular/router";
@@ -8,9 +8,13 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: './news-details.component.html',
   styleUrls: ['./news-details.component.css']
 })
-export class NewsDetailsComponent {
+export class NewsDetailsComponent implements OnInit{
 
-
+  goToPortfolioAndRefresh() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['']);
+    });
+  }
   constructor(private router: Router,private rout : ActivatedRoute,private app : AppService) { }
   collection:any=[];
   currentDate = new Date();
@@ -32,9 +36,5 @@ export class NewsDetailsComponent {
     });
   }
 
-  goToPortfolioAndRefresh() {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['']);
-    });
-  }
+
 }

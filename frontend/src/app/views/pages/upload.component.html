@@ -1,0 +1,30 @@
+<div class="fade-in">
+    <div  *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Successful !</strong> Processing is launched.
+        <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div  *ngIf="!selectedFile" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error !</strong>  Please select a file !!!.
+        <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <c-card class="mb-4">
+        <c-card-header>
+            File handling
+        </c-card-header>
+        <c-card-body>
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                <br>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Upload an excel file :&nbsp;&nbsp; </label>
+                    <input type="file" formControlName="file" class="form-control-file" id="exampleFormControlFile1" (change)="getFileDetails($event)">
+
+                </div>
+                <br>
+                <input type="submit" value="Start processing" class="btn btn-success" style="width: fit-content">
+            </form>
+
+        </c-card-body>
+    </c-card>
+
+</div>

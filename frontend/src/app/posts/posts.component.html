@@ -1,0 +1,48 @@
+
+
+<section class="section contact" style="background-image: url('assets/images/main-slider-02.jpg');background-repeat: no-repeat;height: 200px;background-size: cover;">
+    <a (click)="goToPortfolioAndRefresh()" title="Go to home page" href="#" style="margin-left: 49%;color: white;font-size: x-large;">
+        <i class="fa fa-home"></i>
+    </a>
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="section-heading">
+                    <h2>Details</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section contact" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12" style="color: white">
+                <br>
+                <h4 style="text-align: center">{{post.title}} :</h4>
+                <br>
+                <div style="color: orange" >
+                    <a style="color: white"> Published on : </a>   <i class="fa fa-calendar">  {{ post.publishDate | date: 'yyyy-MM-dd' }}</i>
+                </div>
+                <br><br>
+                <p style="font-size: large;color: white">
+                    {{post.details}}
+                </p>
+                <br>
+
+                    <div>
+                        <li>Download the file for more details :</li> <br>
+                        <div style="background-color: #44aaee;width: 50%">
+                            <a  style="text-decoration: underline;color: white;font-size: large"  href="/assets/docs/{{post.file}}" target="_blank">
+                                Get more details in here {{post.file}}
+                            </a>
+                        </div>
+                    </div>
+
+                <br><br>
+
+            </div>
+
+        </div>
+    </div>
+</section>

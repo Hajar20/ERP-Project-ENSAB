@@ -10,7 +10,6 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { NewsDetailsComponent } from './news-details/news-details.component';
 
@@ -38,6 +37,8 @@ import {
 } from '@coreui/angular';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { PostsComponent } from './posts/posts.component';
+import {UploadComponent} from "./views/pages/upload.component";
 
 
 const APP_CONTAINERS = [
@@ -51,10 +52,11 @@ const APP_CONTAINERS = [
     ListOfNewsComponent,
     LoginFormComponent,
     PortfolioComponent,
-     NewsDetailsComponent,
+    NewsDetailsComponent,
     DefaultFooterComponent,
     DefaultHeaderComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
+    PostsComponent
 
   ],
   imports: [
@@ -85,7 +87,7 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
   ],
   providers: [
 

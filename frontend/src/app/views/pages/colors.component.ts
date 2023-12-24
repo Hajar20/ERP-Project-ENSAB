@@ -2,7 +2,7 @@ import {  Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AppService} from "../../app.service";
 import {StorageService} from "../../storage.service";
-import {FormControl,FormBuilder, FormGroup, FormArray} from "@angular/forms";
+import {FormControl, FormBuilder, FormGroup, FormArray, Validators, AbstractControl} from "@angular/forms";
 
 
 @Component({
@@ -10,17 +10,17 @@ import {FormControl,FormBuilder, FormGroup, FormArray} from "@angular/forms";
 })
 export class ColorsComponent implements OnInit {
   myForm= new FormGroup({
-    details: new FormControl(''),
-    startDate:  new FormControl(''),
-    endDate:  new FormControl(''),
-    threshold1:  new FormControl(''),
-    threshold2:  new FormControl(''),
-    threshold3:  new FormControl(''),
-    link:  new FormControl(''),
+    details: new FormControl('', Validators.required),
+    startDate:  new FormControl('', Validators.required),
+    endDate:  new FormControl('', Validators.required),
+    threshold1:  new FormControl('', Validators.required),
+    threshold2:  new FormControl('', Validators.required),
+    threshold3:  new FormControl('', Validators.required),
+    link:  new FormControl('', Validators.required),
     majorPlaces : new FormArray([
         new FormGroup({
-          major : new FormControl('') ,
-          availablePlaces : new FormControl('')
+          major : new FormControl('', Validators.required) ,
+          availablePlaces : new FormControl('', Validators.required)
         })
     ])
   })
@@ -34,25 +34,35 @@ export class ColorsComponent implements OnInit {
 
   addMajor() {
     const majorArray = this.myForm.get('majorPlaces') as FormArray;
-
     majorArray.push(this.fb.group({
       major: new FormControl(''),
       availablePlaces: new FormControl('')
     }));
   }
-
+  isFieldsEmpty:boolean = false
   alert : boolean = false
 onSubmit(){
-//console.log('majorPlacesData',this.myForm.value.majorPlaces)
-  this.app.addCriteria(this.myForm.value).subscribe((response: any) => {
-        //console.warn("The criteria :", response);
-        this.alert=true
-        this.myForm.reset();
-      },
-    );
+ 
+    if(this.myForm.value.details === '' || this.myForm.value.startDate === '' ||
+        this.myForm.value.endDate === '' || this.myForm.value.threshold1 === ''
+        || this.myForm.value.threshold2 === '' || this.myForm.value.threshold3 === ''
+        || this.myForm.value.majorPlaces?.length === 0
+    ){
+      this.isFieldsEmpty = true
+    } else {
+      //console.log('majorPlacesData',this.myForm.value.majorPlaces)
+      this.app.addCriteria(this.myForm.value).subscribe((response: any) => {
+            //console.warn("The criteria :", response);
+            this.alert=true
+            this.myForm.reset();
+          },
+      );
+    }
+
 
 }
   closeAlert(){
+    this.isFieldsEmpty = false
     this.alert=false
   }
   ngOnInit(): void {

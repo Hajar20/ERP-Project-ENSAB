@@ -4,6 +4,8 @@ import {LoginFormComponent} from "./login-form/login-form.component";
 import {PortfolioComponent} from "./portfolio/portfolio.component";
 import {NewsDetailsComponent} from "./news-details/news-details.component";
 import { DefaultLayoutComponent } from './containers';
+import {PostsComponent} from "./posts/posts.component";
+import {UploadComponent} from "./views/pages/upload.component";
 
 const routes: Routes = [
   {
@@ -42,8 +44,15 @@ const routes: Routes = [
   {
     path : 'details/:id',
     component : NewsDetailsComponent
+  },
+  {
+    path : 'posts/:id',
+    component : PostsComponent
+  },
+  {
+    path : 'uploadExcel',
+    component : UploadComponent
   }
-
 ];
 
 @NgModule({

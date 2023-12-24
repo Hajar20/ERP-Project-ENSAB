@@ -9,15 +9,23 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class TypographyComponent implements OnInit {
   constructor(private router: Router,private app : AppService,private storageService: StorageService) {}
-
+  fileName=""
   myForm = new FormGroup({
     title : new FormControl(''),
     details : new FormControl(''),
     file :new FormControl(''),
   })
+  getFileDetails(event: any) {
+    const selectedFile = event.target.files[0];
+     this.fileName = selectedFile.name;
+     this.myForm.value.file = selectedFile.name
+    //console.log('Filename:', this.myForm.value.file);
+  }
+
   onSubmit(){
+    //console.log('Filename:', this.myForm.value.file);
     this.app.addPost(this.myForm.value).subscribe((response: any) => {
-          console.warn("The post :", response);
+         // console.warn("The post :", response);
           this.alert=true
           this.myForm.reset();
         },

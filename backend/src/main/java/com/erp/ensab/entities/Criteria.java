@@ -39,16 +39,16 @@ public class Criteria  {
 
 	private String details;
 
-	private String link = "not available";
+	private String link = "http://localhost:4200/inscription";
 	private Date publisDate = new Date();
 	//@DBRef
 	//private List<MajorPlaces> majorPlaces=new ArrayList<>();
 
 	private List<Map<String,String>> majorPlaces = new ArrayList<>();
 
-	public Criteria(Responsable responsable,String link, Date startDate, Date endDate,
+	public Criteria(Responsable responsable, Date startDate, Date endDate,
 					float threshold1, float threshold2, float threshold3, String details,List<Map<String,String>> majorPlaces ) {
-		this.link = link;
+		//this.link = link;
 		this.responsable = responsable;
 		//this.year = new Date().getYear();
 		this.startDate = startDate;
