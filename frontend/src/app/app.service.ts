@@ -14,6 +14,17 @@ const httpOptions = {
 export class AppService {
 
   constructor(private http : HttpClient, private storage: StorageService) {}
+
+  addPost(Post : any){
+      return this.http.post(
+          `${baseURL}addPost/${this.storage.getUser().id}`,
+          {
+              "title" : Post.title,
+              "details" : Post.details,
+              "file" : Post.file
+          }
+      )
+  }
   getAllcriterias()  {
     return this.http.get(baseURL +'getAllCriteria');
   }

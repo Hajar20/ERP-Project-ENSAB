@@ -55,7 +55,7 @@ public class API {
     public List<Post> getAllPosts(){
         return postRepository.findAll();
     }
-    @GetMapping("/addPost/{id}")
+    @PostMapping("/addPost/{id}")
     public ResponseEntity<Post> savePosts(@RequestBody Post post, @PathVariable String id){
         Responsable res = responsableRepository.findById(id).get();
         post.setResponsable(res);

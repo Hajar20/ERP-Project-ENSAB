@@ -26,13 +26,12 @@ public class Post implements Serializable {
 	private String title;
 	private String details;
 	private String file;
-	private Date publishDate;
+	private Date publishDate = new Date();
 
-	public Post(Responsable responsable, String title, String details, String file, Date publishDate) {
+	public Post(Responsable responsable, String title, String details, String file) {
 		this.responsable = responsable;
 		this.title = title;
 		this.details = details;
 		this.file = file;
-		this.publishDate = publishDate;
 	}
 }
