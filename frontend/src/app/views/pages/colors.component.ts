@@ -53,7 +53,8 @@ onSubmit(){
       //console.log('majorPlacesData',this.myForm.value.majorPlaces)
       this.app.addCriteria(this.myForm.value).subscribe((response: any) => {
             //console.warn("The criteria :", response);
-            this.alert=true
+             this.isFieldsEmpty = false
+              this.alert=true
             this.myForm.reset();
           },
       );

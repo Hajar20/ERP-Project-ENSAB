@@ -14,11 +14,20 @@
         </c-card-header>
         <c-card-body>
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-                <br>
-                <div class="form-group">
+
+                <div class="row">
+                    <div class="col">
+                    <label for="exampleFormControlFile2">Provide a threshold :&nbsp;&nbsp; </label> <br>
+                    <input type="number" formControlName="threshold" class="form-control" id="exampleFormControlFile2" >
+                    </div>
+
+
+                <div class="col">
+                    <br>
                     <label for="exampleFormControlFile1">Upload an excel file :&nbsp;&nbsp; </label>
                     <input type="file" formControlName="file" class="form-control-file" id="exampleFormControlFile1" (change)="getFileDetails($event)">
 
+                </div>
                 </div>
                 <br>
                 <input type="submit" value="Start processing" class="btn btn-success" style="width: fit-content">

@@ -3,6 +3,10 @@
     <strong>Successful !</strong> A new post has been published.
     <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+  <div  *ngIf="isFieldsEmpty" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error !</strong>  Please fill in all the fields !!!
+    <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <c-card class="mb-4">
     <c-card-header>
       Publish a post
