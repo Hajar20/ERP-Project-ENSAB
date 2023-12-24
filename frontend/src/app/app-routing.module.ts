@@ -6,13 +6,17 @@ import {NewsDetailsComponent} from "./news-details/news-details.component";
 import { DefaultLayoutComponent } from './containers';
 import {PostsComponent} from "./posts/posts.component";
 import {UploadComponent} from "./views/pages/upload.component";
+import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
   {
     path: '',
     component: PortfolioComponent
   },
-
+  {
+    path: 'inscription',
+    component: InscriptionComponent
+  },
   {
     path: 'home',
     redirectTo: 'pages/poster',

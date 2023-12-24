@@ -1,0 +1,212 @@
+
+
+<div class="content">
+
+  <div class="inscription-end-container" *ngIf="isEndOfInscription()">
+    <p>Inscription end</p>
+    <span>IN : {{endInscriptionDate?.toDateString()}}</span>
+  </div>
+  
+  <div class="formulaire" *ngIf="!isEndOfInscription()">
+    <div class="logo-container">
+      <img src="../../assets/images/ensabLogo.png" alt="Logo" width="200" height="100"> <!-- Adjust the path and dimensions -->
+    </div>
+
+    <form [formGroup]="inscriptionForm" (ngSubmit)="submitForm()">
+
+      <h2>Personal information</h2>
+      <div class="sexe">
+        <label>Gender:</label>
+        <label class="lables">M</label>
+        <input type="radio" formControlName="sexe" value="M">
+        <label>F</label>
+        <input type="radio" formControlName="sexe" value="F">
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('nom')?.invalid && inscriptionForm.get('nom')?.touched }">
+        <label>Last Name:</label>
+        <input type="text" formControlName="nom" required>
+        <div *ngIf="inscriptionForm.get('nom')?.invalid && inscriptionForm.get('nom')?.touched">
+          <small class="text-danger">Last name is required</small>
+        </div>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('prenom')?.invalid && inscriptionForm.get('prenom')?.touched }">
+        <label>First name:</label>
+        <input type="text" formControlName="prenom" required>
+        <div *ngIf="inscriptionForm.get('prenom')?.invalid && inscriptionForm.get('prenom')?.touched">
+          <small class="text-danger">First name is required</small>
+        </div>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('cne')?.invalid && inscriptionForm.get('cne')?.touched }">
+        <label>CNE:</label>
+        <input type="text" formControlName="cne" required>
+        <div *ngIf="inscriptionForm.get('cne')?.invalid && inscriptionForm.get('cne')?.touched">
+          <small class="text-danger">CNE is required</small>
+        </div>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('cni')?.invalid && inscriptionForm.get('cni')?.touched }">
+        <label>CNI:</label>
+        <input type="text" formControlName="cni" required>
+        <div *ngIf="inscriptionForm.get('cni')?.invalid && inscriptionForm.get('cni')?.touched">
+          <small class="text-danger">CNI is required</small>
+        </div>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('dateNaissance')?.invalid && inscriptionForm.get('dateNaissance')?.touched }">
+        <label>Birth date:</label>
+        <input type="date" formControlName="dateNaissance" required>
+        <div *ngIf="inscriptionForm.get('dateNaissance')?.invalid && inscriptionForm.get('dateNaissance')?.touched">
+          <small class="text-danger">Birth date is required</small>
+        </div>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('telephone')?.invalid && inscriptionForm.get('telephone')?.touched }">
+        <label>phone:</label>
+        <input type="tel" formControlName="telephone" required>
+        <div *ngIf="inscriptionForm.get('telephone')?.invalid && inscriptionForm.get('telephone')?.touched">
+          <small class="text-danger">phone number is required</small>
+        </div>
+      </div>
+
+      <!-- Bac info -->
+      <h2>Bac info</h2>
+      <div>
+        <label>Type:</label>
+        <select formControlName="bacType" required>
+          <option value="Scientifique">Scientist</option>
+          <option value="Technique">Technical</option>
+        </select>
+        <label>Option:</label>
+        <select formControlName="bacOption" required>
+          <option value="Mathematique">Mathematical</option>
+          <option value="Physique">Physical</option>
+          <option value="SVT">SVT</option>
+          <option value="Technique">Technical</option>
+        </select>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('bacDateObtention')?.invalid && inscriptionForm.get('bacDateObtention')?.touched }">
+        <label>Obtained date:</label>
+        <input type="date" formControlName="bacDateObtention" required>
+        <div *ngIf="inscriptionForm.get('bacDateObtention')?.invalid && inscriptionForm.get('bacDateObtention')?.touched">
+          <small class="text-danger">Obtained date is required</small>
+        </div>
+      </div>
+      <div>
+        <label>Distinction:</label>
+        <select formControlName="bacMention" required>
+          <option value="assez-bien">Pretty good</option>
+          <option value="bien">Good</option>
+          <option value="tres-bien">Very good</option>
+        </select>
+      </div>
+
+      <!-- Diplome info -->
+      <h2>Diploma info</h2>
+      <h6>Bac+2 </h6>
+      <div>
+        <label>Type:</label>
+        <select formControlName="diplomeType" required>
+          <option value="DUT">DUT</option>
+          <option value="DTS">DTS</option>
+          <option value="DUEG">DUEG</option>
+          <option value="DUEST">DUEST</option>
+          <option value="DEUP">DEUP</option>
+        </select>
+        <label>Specialty:</label>
+        <select formControlName="diplomeSpeciality" required>
+          <option value="Electrique">Computer Engineering</option>
+          <option value="Energie">Renewable Energies</option>
+          <option value="Developpement">Web and Mobile Development</option>
+          <option value="Reseaux">Network Security</option>
+          <option value="Electrique">Electrical Engineering</option>
+          <option value="Autre">Other </option>
+        </select>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('diplomeDateObtention')?.invalid && inscriptionForm.get('diplomeDateObtention')?.touched }">
+        <label>Obtained date:</label>
+        <input type="date" formControlName="diplomeDateObtention" required>
+        <div *ngIf="inscriptionForm.get('diplomeDateObtention')?.invalid && inscriptionForm.get('diplomeDateObtention')?.touched">
+          <small class="text-danger">Obtained date is required</small>
+        </div>
+      </div>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('ecole')?.invalid && inscriptionForm.get('ecole')?.touched }">
+        <label>School:</label>
+        <input type="text" formControlName="ecole" required>
+        <div *ngIf="inscriptionForm.get('ecole')?.invalid && inscriptionForm.get('ecole')?.touched">
+          <small class="text-danger">School is required</small>
+        </div>
+      </div>
+      <div>
+        <label>Grades:</label>
+        <input type="number" placeholder="S1" formControlName="noteS1" required>
+        <div *ngIf="inscriptionForm.get('noteS1')?.invalid && inscriptionForm.get('noteS1')?.touched">
+          <small class="text-danger">Grade S1 is required</small>
+        </div>
+
+        <input type="number" placeholder="S2" formControlName="noteS2" required>
+        <div *ngIf="inscriptionForm.get('noteS2')?.invalid && inscriptionForm.get('noteS2')?.touched">
+          <small class="text-danger">Grade S2 is required</small>
+        </div>
+
+        <input type="number" placeholder="S3" formControlName="noteS3" required>
+        <div *ngIf="inscriptionForm.get('noteS3')?.invalid && inscriptionForm.get('noteS3')?.touched">
+          <small class="text-danger">Grade S3 is required</small>
+        </div>
+
+        <input type="number" placeholder="S4" formControlName="noteS4" required>
+        <div *ngIf="inscriptionForm.get('noteS4')?.invalid && inscriptionForm.get('noteS4')?.touched">
+          <small class="text-danger">Grade S4 is required</small>
+        </div>
+      </div>
+
+      <!-- Bac+3 -->
+      <div class="bac3">
+        <h6>Bac+3 </h6>
+        <input type="checkbox" formControlName="isBac3">
+      </div>
+      <div *ngIf="inscriptionForm.get('isBac3')?.value">
+        <div [ngClass]="{ 'has-error': inscriptionForm.get('diplomeDateObtentionBaC3')?.invalid && inscriptionForm.get('diplomeDateObtentionBaC3')?.touched }">
+          <label>Obtained date::</label>
+          <input type="date" formControlName="diplomeDateObtentionBaC3" required>
+          <div *ngIf="inscriptionForm.get('diplomeDateObtentionBaC3')?.invalid && inscriptionForm.get('diplomeDateObtentionBaC3')?.touched">
+            <small class="text-danger">Obtained date is required</small>
+          </div>
+        </div>
+        <div [ngClass]="{ 'has-error': inscriptionForm.get('ecoleBac3')?.invalid && inscriptionForm.get('ecoleBac3')?.touched }">
+          <label>School:</label>
+          <input type="text" formControlName="ecoleBac3" required>
+          <div *ngIf="inscriptionForm.get('ecoleBac3')?.invalid && inscriptionForm.get('ecoleBac3')?.touched">
+            <small class="text-danger">School is required</small>
+          </div>
+        </div>
+        <label>Grade S5:</label>
+        <input type="number" formControlName="noteS5">
+        <label>Grade S6:</label>
+        <input type="number" formControlName="noteS6">
+      </div>
+
+      <!-- Choix filière -->
+      <h2>Branch choice</h2>
+      <div [ngClass]="{ 'has-error': inscriptionForm.get('filiere')?.invalid && inscriptionForm.get('filiere')?.touched }">
+        <label>Branches:</label>
+        <select formControlName="filiere" required>
+          <option value="Aeronautique">Aeronautical Engineering</option>
+          <option value="BigData">Information Systems Engineering and Big Data</option>
+          <option value="GI">Computer Engineering</option>
+          <option value="Energie">Energy Engineering and Environment</option>
+          <option value="Mecatronique">Mechatronics Engineering and Intelligent Systems</option>
+        </select>
+        <div *ngIf="inscriptionForm.get('filiere')?.invalid && inscriptionForm.get('filiere')?.touched">
+          <small class="text-danger">Branch is required</small>
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+   <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>{{ successMessage }}</p>
+    </div>
+  </div>
+
+  </div>
+</div>

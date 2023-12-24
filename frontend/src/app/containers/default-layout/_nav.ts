@@ -22,7 +22,13 @@ export const navItems: INavData[] = [
     name: 'File handling',
     url: '/pages/uploadExcelFile',
     //linkProps: { fragment: 'someAnchor' },
-    iconComponent: { name: 'cil-file' }
+    iconComponent: {name: 'cil-file'}
+  },
+  {
+    name: 'Candidates',
+    url: '/pages/candidates',
+    //linkProps: { fragment: 'someAnchor' },
+    iconComponent: { name: 'cil-people' }
   },
 
 

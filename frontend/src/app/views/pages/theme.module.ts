@@ -28,7 +28,8 @@ import {UploadComponent} from "./upload.component";
   declarations: [
     ColorsComponent,
     TypographyComponent,
-    UploadComponent
+    UploadComponent,
+
   ]
 })
 export class ThemeModule {
