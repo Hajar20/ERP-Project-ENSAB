@@ -56,21 +56,19 @@
                         </tr>
                     </table>
                     <br>
-                    <div *ngIf="!isVisible(collection.endDate); else elseBlock">
+                    <div *ngIf="isVisible(collection.startDate); else elseBlock">
                         <li>Link below takes you to the form to submit your application :</li>
                         <div style="background-color: #44aaee;">
                             <a href="http://localhost:4200/inscription" style="text-decoration: underline;color: white;font-size: large" target="_blank">
-                                {{collection.link}}
+                                Click Me
                             </a>
                         </div>
                     </div>
 
                     <ng-template #elseBlock>
-                        <li>The link is no longer available, the Pre-registration is done :</li>
-                        <div style="background-color: #44aaee;">
-                            <a  style="text-decoration: underline;color: white;font-size: large"  disabled>
-                                https://github.com/Hajar20/ERP-Project-ENSAB
-                            </a>
+
+                        <div style="background-color: red;">
+                            <li>The link is not available at this moment !!</li>
                         </div>
                     </ng-template>
 

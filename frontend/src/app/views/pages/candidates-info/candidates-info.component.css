@@ -41,4 +41,36 @@ table {
   border-radius: 5px;
 }
 
+
+/* -----------------Pagenation---------------- */
+
+/* Add this style to your component's CSS file or global styles file */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #043ca3;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:hover {
+  background-color: #365bf1;
+}
+
+.pagination span {
+  padding: 10px 15px;
+  margin: 0 5px;
+}
+
+
   

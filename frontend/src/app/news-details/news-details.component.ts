@@ -19,8 +19,8 @@ export class NewsDetailsComponent implements OnInit{
   collection:any=[];
   currentDate = new Date();
 
-  isVisible(endDate: Date): boolean {
-    return endDate === this.currentDate || endDate < this.currentDate
+  isVisible(date: Date): boolean {
+    return new Date(date) === this.currentDate || new Date(date) < this.currentDate
   }
   ngOnInit() {
     this.getCriteria(this.rout.snapshot.params['id'])

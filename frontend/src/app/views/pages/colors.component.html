@@ -3,7 +3,7 @@
 
 
     <div  *ngIf="isFieldsEmpty" class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>Successful !</strong> Please fill in all the fields.
+      <strong>Error !</strong> Please fill in all the fields !!!
       <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <div  *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -59,7 +59,7 @@
     <br>
     <div class="form-group ">
       <label for="formGroupExampleInput">Link of pre-registartion :</label>
-      <input type="text" class="form-control" formControlName="link" placeholder="Link " value="http://localhost:4200/inscription">
+      <input type="text" class="form-control" formControlName="link" placeholder="Link" >
     </div>
 <br><br>
     <input type="submit" class="btn btn-success" style="width: 100px" value="Save">

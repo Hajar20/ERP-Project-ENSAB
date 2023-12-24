@@ -1,4 +1,6 @@
-<!-- Table -->
+
+<h3> Selected candidates</h3>
+<br>
 <table class="table table-striped">
   <!-- Table header -->
   <thead>
@@ -11,8 +13,8 @@
     </tr>
   </thead>
   <!-- Table body -->
-  <tbody *ngIf="candidates && candidates.length > 0; else noData">
-    <tr *ngFor="let candidate of candidates">
+  <tbody *ngIf="paginatedCandidates && paginatedCandidates.length > 0; else noData">
+    <tr *ngFor="let candidate of paginatedCandidates">
       <td>{{ candidate.cne }}</td>
       <td>{{ candidate.firstname }}</td>
       <td>{{ candidate.lastname }}</td>
@@ -29,6 +31,13 @@
     </tr>
   </ng-template>
 </table>
+
+<!-- Pagination buttons -->
+<div class="pagination">
+  <button (click)="onPrevPage()" [disabled]="!hasPrevPage()">Previous</button>
+  <span>Page {{ currentPage }}</span>
+  <button (click)="onNextPage()" [disabled]="!hasNextPage()">Next</button>
+</div>
 
 <!-- Button for PDF generation with class -->
 <button class="pdf-button" (click)="generatePDF()">Generate PDF</button>
