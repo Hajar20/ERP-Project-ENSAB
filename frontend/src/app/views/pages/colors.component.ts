@@ -19,8 +19,8 @@ export class ColorsComponent implements OnInit {
     link:  new FormControl('http://localhost:4200/inscription', Validators.required),
     majorPlaces : new FormArray([
         new FormGroup({
-          major : new FormControl('', Validators.required) ,
-          availablePlaces : new FormControl('', Validators.required)
+          major : new FormControl('') ,
+          availablePlaces : new FormControl('')
         })
     ])
   })
